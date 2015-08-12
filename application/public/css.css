@@ -1,0 +1,47 @@
+BODY {
+	margin: 30px;
+	padding: 0;
+}
+H1 {
+	margin-bottom: 2px;
+	font-family: Garamond, "Times New Roman", Times, Serif;
+}
+FIELDSET {
+	border: 1px solid #ccc;
+	padding: 1em;
+	margin: 0;
+}
+LEGEND {
+	color: #666666;
+}
+INPUT[type="text"] {
+	display: block;
+	font-family: Arial, verdana;
+	padding: 7px;
+	border: 1px solid #999;
+	margin: 10px 0px;
+}
+INPUT[type="time"] {
+    display: block;
+    border: 1px solid #999;
+    margin: 5px 0px;
+}
+INPUT[type="button"], INPUT[type="submit"] {
+    font-family: Arial, verdana;
+    padding: 7px;
+    border: 1px solid #999;
+    margin: 20px 0px 0px;
+}
+A {color: #0000FF;}
+A:visited {color: #0000FF;}
+A:active {color: #FF0000;}
+.month_name{
+    color: #333333;
+    font-size: 200%;
+}
+.error{color:red;}
+.weekend{color:red;}
+.event_status0{color:green;}
+.event_status1{color:black;}
+.event_status2{color:rosybrown; text-decoration: line-through}
+.event_status3{color:orangered;}

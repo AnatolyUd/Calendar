@@ -1,0 +1,50 @@
+    <span>
+        <span class="month_name"><?= $date_info['day'] ?>&nbsp;<?= $date_info['month_name'] ?>&nbsp;<?= $date_info['year'] ?></span>
+    </span>
+    <?php if(isset($errorMsg) && $errorMsg) {?>
+        <div class="error">
+            <br>
+            <span><?= $errorMsg?></span>
+        </div>
+    <?php }?>
+<table width="00%" border="0" cellpadding="2" cellspacing="2">
+  <tr>
+    <td valign="top">
+    <fieldset>
+        <legend><?php if(empty($event_info['id'])): ?>Add<?php else: ?>Edit<?php endif ?> event</legend>
+        <form action="" method="post">
+            <input type="hidden" name="id" value="<?= $event_info['id']?>"/>
+            <input type="hidden" name="day_stamp" value="<?= $date_info['day_stamp']?>"/>
+		<table width="300" border="0" cellpadding="2" cellspacing="2">
+          <tr>
+            <td><div align="right"><strong>Time Start</strong></div></td>
+            <td><input type="time" name="t_start" required autofocus value="<?= $event_info['time_start']?>"/></td>
+          </tr>
+          <tr>
+            <td><div align="right"><strong>Time End</strong></div></td>
+            <td><input type="time" name="t_end" required value="<?= $event_info['time_end']?>"/></td>
+          </tr>
+            <tr>
+                <td><div align="right"><strong>Title</strong></div></td>
+                <td><input type="text" name="title" required maxlength="20" placeholder="Title" value="<?= $event_info['title']?>"/></td>
+            </tr>
+          <tr>
+            <td><div align="right"><strong>Status</strong></div></td>
+            <td>
+                <select name="status">
+                <?php foreach($event_status as $key => $status_name) {?>
+                    <option value="<?= $key ?>" <?php if($key==$event_info['status']) {?>selected<?php }?>><?= $status_name ?></option>>
+                <?php } ?>
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="right"><input type="submit" value="Send" /> <input type="button" value="Cancel" onclick="javascript:window.location='?route=calendar/index/<?= date("Y-m", $date_info['day_stamp']) ?>'" /></td>
+          </tr>
+        </table>
+		</form>
+    </fieldset>
+    </td>
+  </tr>
+</table>

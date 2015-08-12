@@ -1,0 +1,38 @@
+    <span>
+        <a href="<?= $prev_month ?>">&lt;&lt;&lt; Prev</a>
+        <span class="month_name"><?= $month_name," ",$year ?></span>
+        <a href="<?= $next_month ?>">Next &gt;&gt;&gt;</a>
+    </span>
+<table border=1 cellspacing=0 cellpadding=2 width="100%">
+    <tr>
+        <?php foreach($daysOfWeek as $dayWeek): ?>
+        <th width='14%;'><?= $dayWeek ?></th>
+        <?php endforeach ?>
+    <tr>
+<?php
+    $i=0;
+    for ($day=$start; $day<=$end; $day++) { ?>
+    <?php if (!($i++ % 7)) { ?>
+        <tr>
+    <?php } ?>
+
+    <td>
+        <?php if ($day < 1 OR $day > $day_count) { ?>
+            &nbsp
+        <?php } else { ?>
+            <span <?php if(!($i % 7) || !(($i+1) % 7)) :?>class='weekend'<?php endif ?>><?= $day ?>.<br></span>
+            <?php if (isset($events[$day])) { ?>
+                <?php foreach ($events[$day] as $event) { ?>
+                <span class="event_status<?= $event['status']?>"><?= date('H:i',$event['t_start'])?>-<?= date('H:i',$event['t_end'])?>&nbsp;<a href="<?=$edit_link.$event['id']?>"><?= $event['title'] ?></a></span>
+                    <br>
+                <?php } ?>
+            <?php } ?>
+            <span><a href="<?=$add_link.'-'.$day?>">(Add)</a></span>
+        <?php } ?>
+    </td>
+
+    <?php if (!($i % 7)) { ?>
+        </tr>
+    <?php } ?>
+<?php } ?>
+</table>
